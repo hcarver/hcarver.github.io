@@ -53,8 +53,8 @@ But making a webpage doesn't bring people to it. One of the best ways to send tr
 Most often, these will be forums. If your customers' problem is "I keep losing my keys", then find every forum post titled "How do you find lost keys?" and link back to your sales pitch. **Use your knowledge of the customer to target them specifically.**
 
 This doesn't mean you should post fake reviews. That's not cool. And if you have a strong understanding of your customers, you shouldn't have to. "Hey, I've actually made something for people like you here:
-<link>" is a better idea than posting "I use
-<link> and it's changed my life and everyone should buy it." No-one doubts the honesty of the first one; everyone doubt the honesty of the second.
+[link]" is a better idea than posting "I use
+[link] and it's changed my life and everyone should buy it." No-one doubts the honesty of the first one; everyone doubt the honesty of the second.
 
 Adverts are useful too, but start with forums. Forum posts are (normally) free.
 

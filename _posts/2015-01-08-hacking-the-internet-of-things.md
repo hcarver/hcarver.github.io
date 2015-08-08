@@ -17,19 +17,19 @@ I'm not saying these aren't fun ideas that would make our lives better, but I th
 <h2>A bigger picture</h2>
 Before we had the internet this was pretty much the worst thing someone could do to your computer:
 
-<img src="assets/Windows_9X_BSOD.png" />
+![Windows blue screen of death](/assets/Windows_9X_BSOD.png)
 
 Crash it, wipe it, Blue-Screen-of-Death it.
 
 With the Internet, this is pretty much the worst thing someone could get with your computer:
 
-<img src="assets/jennifer-lawrence-other-celebs-outraged-by-nude-photo-leak.jpeg" />
+![iCloud photo leak](/assets/jennifer-lawrence-other-celebs-outraged-by-nude-photo-leak.jpeg)
 
 Steal your private or secret data and sell it or <a href="http://en.wikipedia.org/wiki/2014_celebrity_photo_hack">give it away for free</a>. Having your dignity stolen and your privacy violated goes beyond just losing data.
 
 With the Internet of Things, this is pretty much the worst thing someone could do to your computer:
 
-<img src="assets/house_explosion.jpg" />
+![Exploding house](/assets/house_explosion.jpg)
 
 Blow it up. Everything you own destroyed. Except your car, unless your car is on the Internet of Things too. Which it probably will be.
 

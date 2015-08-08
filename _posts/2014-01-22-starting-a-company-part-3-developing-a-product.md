@@ -72,7 +72,7 @@ Phew! All of that came from a single search on Google Trends, and we already hav
 
 Next, sign up for some adverts that people can click on that will go to the page you just created. I recommend Facebook ads for targeting demographics and locations, Google AdWords ads for finding people who are already looking for solutions to a problem and StumbleUpon ads for high-volume mass-market ideas. Which one you use depends on who you're appealing to. It's normally a good idea to use different adverts to target different people.
 
-Hopefully you can see that **this is powerful for your business*. Not only do you get to test your understanding of your customer with the copy you write on the webpage, but you start gathering a list of email addresses of people who are really keen to use what you're planning to make. At this stage, you can start using split testing (more on that next time) to try out different versions of your pitch to customers to understand exactly what they're looking for.
+Hopefully you can see that **this is powerful for your business**. Not only do you get to test your understanding of your customer with the copy you write on the webpage, but you start gathering a list of email addresses of people who are really keen to use what you're planning to make. At this stage, you can start using split testing (more on that next time) to try out different versions of your pitch to customers to understand exactly what they're looking for.
 
 This only takes a day or two to set up and run, and a bit of cash for the adverts, which is at least 10x faster than developing a  tangible thing and trying to sell it.
 

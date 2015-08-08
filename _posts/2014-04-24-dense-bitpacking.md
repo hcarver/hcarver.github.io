@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Dense Bitpacking for Fun and (tiny) Profit
+title: Dense Bitpacking
 date: 2014-04-24 08:00:45.000000000 +01:00
 categories: []
 tags: []
@@ -104,7 +104,7 @@ Lastly, we're going to add the value 3 for a field that can go up to 7.
 Now we have our metadata value of 59. If we take <code>59 % 3</code> we get back 2, if we take <code>59 % 5</code> we get back 4, and if we take <code>59 % 7</code> we get back 3.
 
 <h2>Summary</h2>
-Prime numbers let you store several pieces of integer metadata information within a single integer, in a way that lets you access them with a single operation.
+Prime numbers let you store several pieces of integer metadata information within a single integer, in a way that lets you access them with a single modulo operation.
 
 This probably isn't the fix to your slow code, but it is quite fun.
 
