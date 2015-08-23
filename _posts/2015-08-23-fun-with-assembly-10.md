@@ -56,9 +56,9 @@ However, reading the manual, an argument of `0x7f` will simply open the door. So
 
 Reading through the `INT` function, it looks 2 bytes beyond the stack pointer for its argument. So the input we need, altogether looks like:
 
-`<16 bytes of anything><3245 (the address 0x4532 with bytes reversed)><4 bytes of anything><7f00>`
+`<16 bytes of anything><3245 (the address 0x4532 with bytes reversed)><4 bytes of anything><7f>`
 
-I used `00000000000000000000000000000000324500007f00`, and...
+I used `00000000000000000000000000000000324500007f`, and...
 
 # The door springs open
 
