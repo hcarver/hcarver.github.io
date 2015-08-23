@@ -1,81 +1,60 @@
 ---
 layout: post
-title: 'Fun with Assembly 8: '
-date: 2015-08-24
+title: 'Fun with Assembly 9: Seriously though, sanitise your inputs'
+date: 2015-08-23
 status: publish
 type: post
-published: false
+published: true
 author: Hywel Carver
 ---
-This is the seventh in a series. You might want to read the [previous post]({% post_url 2015-08-05-fun-with-assembly-6 %}) before reading this.
+This is the ninth in a series. You might want to read the [previous post]({% post_url 2015-08-23-fun-with-assembly-8 %}) before reading this.
 
 This post is based on the Addis Ababa level on [microcorruption.com](http://microcorruption.com). Like last time, we’re trying to find an input to open a lock without knowing the correct password, using knowledge of assembly language.
 
+# First steps
 
+As always, I'm starting with a quick read through the code to look for anything unusual compared to other levels. Firstly, we get up to 19 characters of input, and store it at `0x2400`.
 
+    4454:  3e40 1300      mov   #0x13, r14
+    4458:  3f40 0024      mov   #0x2400, r15
+    445c:  b012 8c45      call  #0x458c <getsn>
 
+19 isn't very many. The input is then copied onto the stack, two bytes down from the top of the stack.
 
+    4460:  0b41           mov   sp, r11
+    4462:  2b53           incd  r11
+    4464:  3e40 0024      mov   #0x2400, r14
+    4468:  0f4b           mov   r11, r15
+    446a:  b012 de46      call  #0x46de <strcpy>
 
-<h1>First glance</h1>
-<pre><code>443e:  3e40 f800      mov   #0xf8, r14
-4442:  3f40 0024      mov   #0x2400, r15
-4446:  b012 8644      call  #0x4486 &lt;enc&gt;
-444a:  b012 0024      call  #0x2400
-</code></pre>
-Hmm. We call a function called <code>enc</code>, passing the location <code>0x2400</code>, then we call <code>0x2400</code> itself. That's unusual because at this point, <code>0x2400</code> is full of junk, not usable assembly code. If we let the code run up until <code>0x444a</code>, we find that the content of <code>0x2400</code> has been updated. So it looks like <code>enc</code> was decrypting something that was there into runnable assembly.
+At this point, the code runs `test_password_valid` to check the password's right. I'm going to ignore that, because the password we enter will be wrong.Next, the result of that is written onto the stack before the code calls `printf` with the password that was entered. 
 
-<h1>Decompiling</h1>
-By pausing the running code, we can copy the decrypted instructions into a decompiler, to convert it to readable assembly, which we can then understand. The decrypted code begins with one long function, so let's begin with that.
+    4476:  814f 0000      mov r15, 0x0(sp)
+    447a:  0b12           push  r11
+    447c:  b012 c845      call  #0x45c8 <printf>
 
-<pre><code>2400: 0b12           push   r11
-2402: 0412           push   r4
-2404: 0441           mov    sp, r4
-2406: 2452           add    #0x4, r4
-2408: 3150 e0ff      add    #0xffe0, sp
-240c: 3b40 2045      mov    #0x4520, r11
-2410: 073c           jmp    $+0x10
-2412: 1b53           inc    r11
-2414: 8f11           sxt    r15
-2416: 0f12           push   r15
-2418: 0312           push   #0x0
-241a: b012 6424      call   #0x2464
-242e: 2152           add    #0x4, sp
-2420: 6f4b           mov.b  @r11, r15
-2422: 4f93           tst.b  r15
-2424: f623           jnz    $-0x12
-2426: 3012 0a00      push   #0xa
-242a: 0312           push   #0x0
-242c: b012 6424      call   #0x2464
-2430: 2152           add    #0x4, sp
-2432: 3012 1f00      push   #0x1f
-2436: 3f40 dcff      mov    #0xffdc, r15
-243a: 0f54           add    r4, r15
-243c: 0f12           push   r15
-243e: 2312           push   #0x2
-2440: b012 6424      call   #0x2464
-2444: 3150 0600      add    #0x6, sp
-2448: b490 8d8c dcff cmp    #0x8c8d, -0x24(r4)
-244e: 0520           jnz    $+0xc
-2450: 3012 7f00      push   #0x7f
-2454: b012 6424      call   #0x2464
-2458: 2153           incd   sp
-245a: 3150 2000      add    #0x20, sp
-245e: 3441           pop    r4
-2460: 3b41           pop    r11
-2462: 3041           ret
-</code></pre>
-There's a lot here, but two lines stand out
+Just like last time, there's no sanitising of the string that we can input. That means we can exploit `printf` in the same way as before. Now we just need to work out what we want to change. 
 
-<pre><code>2450: 3012 7f00      push   #0x7f
-2454: b012 6424      call   #0x2464
-</code></pre>
-<code>0x2464</code> looks like it's the interrupt function, because it's called so many times. And the manual tells us that <code>0x7f</code> is the argument passed to unlock the door. So how do we get this to be called? The two lines before have:
+Later on, that return value is read to decide whether or not to open the door.
 
-<pre><code>2448: b490 8d8c dcff cmp    #0x8c8d, -0x24(r4)
-244e: 0520           jnz    $+0xc
-</code></pre>
-We can see that the lines that open the door are only called if <code>-0x24(r4)</code> is equal to the literal value <code>0x8c8d</code>. It's not much of a stretch to guess that <code>-0x24(r4)</code> is the start of the string. So let's try an input of <code>0x8d8c</code> (remember: we reverse the byte order). It works!
+    448a:  8193 0000      tst   0x0(sp)
+    448e:  0324           jz    #0x4496 <main+0x5e>
+    4490:  b012 da44      call  #0x44da <unlock_door>
 
-<h1>Endnotes</h1>
-As a rule, security through obscurity doesn't work. Hiding <em>the way</em> you make something secure doesn't really secure it, because with a little hard work someone can come and uncover <em>the way</em> you make something secure. That's not the same as hiding <em>the password</em> to make something secure - it was easy for us to uncover the assembly code that was being run here. But that wouldn't have helped us at all if the password had been a better-kept secret.
+So, let's use `printf` to overwrite the return value with anything that isn't zero. By inserting a breakpoint on these lines, you can step through the code and see that the return value is being written to `0x303c` (the location of the stack pointer at that moment).
 
+When `printf` is called with the input from the user, the stack looks like this: 
+
+    303a: 3e30 (the address of the input string)
+    303c: 0000 (the return value that we want to overwrite)
+    303e: ... (the input string itself)
+
+`printf` will see its arguments as the address of the string, the value 0, then the first two bytes of the input string. The string should start `3c30` (remember that addresses are stored with the byte order switched), because this will be the location that printf eventually writes something to. 
+
+Then we need to add something for the function to consume the 0000, e.g. a `%i` formatter that will output an integer (`2569` in hex). Finally, we want a `%n`(`256e` in hex), which will make `printf` write out the number of characters it has written so far to the next address on the stack (which we've manipulated so that it will overwrite the return value from `check_password_valid`).
+
+`3c302569256e`
+
+# And the door springs open
+
+As before, this is what happens when you take input from users then use it without sanitisation in sensitive contexts (printing functions, SQL, HTML). The best case is that they can crash your program, but [the worst case is that they can hack into your data](https://xkcd.com/327/), or open your locks.
