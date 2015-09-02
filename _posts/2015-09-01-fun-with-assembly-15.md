@@ -217,6 +217,8 @@ That last one is very useful to us - if we know the value of the program counter
 
 By entering a username of "%x%x", we will be able to extract some addresses from the output - playing around with this shows that the second address is the address of the `printf`. Before the code section was moved to a random location, that value would have been at `0x476a` so by comparing the two, we get the distance moved by the ASLR.
 
+We could have worked out that the second address was `printf`. At the start of the `_aslr_main` function, `r12` was written to `0x2(sp)`, and as we saw at the time, `r12` pointed to `printf`.
+
     45e6:  2153           incd  sp
     45e8:  0f4b           mov r11, r15
     45ea:  033c           jmp #0x45f2 <_aslr_main+0x170>
