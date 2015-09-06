@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Fun with Assembly 16: '
+title: 'Fun with Assembly 16: Data Execution Prevention'
 date: 2015-09-02
 status: publish
 type: post
