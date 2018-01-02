@@ -1,12 +1,12 @@
 # Site settings
 title: Startups and Technology
 header-img: img/home-bg.jpg
-email: h@londonstartuptech.com
+email: hywelc@gmail.com
 description: "I write about startups and technology"
 baseurl: ""
 url: "http://writing.londonstartuptech.com"
 twitter_username: h_carver
-github_username:  hcarver
+githuB_username:  hcarver
 
 # Build settings
 markdown: kramdown
