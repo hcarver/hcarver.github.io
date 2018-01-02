@@ -11,7 +11,7 @@ githuB_username:  hcarver
 # Build settings
 markdown: kramdown
 excerpt_separator: "\n\n"
-highlighter: pygments
 permalink: pretty
-paginate: 5
+paginate: 10
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+plugins: ["jekyll-paginate"]

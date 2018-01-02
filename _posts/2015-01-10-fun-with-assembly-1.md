@@ -21,8 +21,8 @@ Here's an example of the assembly code for a simple programme that controls an e
 
 <small>I'm just a boy sitting in front of some assembly code, asking what any of it means.</small>
 
-The other posts in this series are going to use examples from 
-[microcorruption.com](http://microcorruption.com), a game about exploiting computer-controlled door locks (in your browser, not in real life). If you follow along, you'll understand how hackers can break into your computer from the other side of the world, and [why people should be very worried about the Internet of Things]({% post_url 15-01-08-hacking-the-internet-of-things %}).
+The other posts in this series are going to use examples from
+[microcorruption.com](http://microcorruption.com), a game about exploiting computer-controlled door locks (in your browser, not in real life). If you follow along, you'll understand how hackers can break into your computer from the other side of the world, and [why people should be very worried about the Internet of Things]({% post_url 2015-01-08-hacking-the-internet-of-things %}).
 
 <h2>Your CPU and its minions</h2>
 You might already know roughly how a CPU works. Here's a quick intro anyway.
@@ -42,7 +42,7 @@ Each program has 3 'segments' of RAM: the <strong>text</strong> segment is a cop
 The stack contains a lot of your program's data, and it grows and shrinks as your program runs. Functions within your program will execute other functions which execute other functions, kind of like <a href="http://en.wikipedia.org/wiki/Matryoshka_doll">Matryoshka dolls</a>. Each of that chain of functions has some space on the stack: the first function in your program (called <code>main</code>, you can think of it like the biggest doll that contains all the others) is at the <em>highest</em> addresses in memory. The functions called by <code>main</code> have stack space at <em>lower</em> memory addresses, growing <em>downwards</em>. As a result, the lowest end of the stack always contains the RAM being used by the function that is currently executing on the CPU.
 
 <h2>Registers</h2>
-We're going to look at the Texas Instruments MSP430 processor here, because that's what's used by 
+We're going to look at the Texas Instruments MSP430 processor here, because that's what's used by
 [Microcorruption](http://microcorruption.com), which the rest of the series will focus on. It’s a low-power processor, meaning it needs less electrical power and so less cooling, which makes it great for single-purpose hardware such as door-lock controllers.
 
 I mentioned registers before - they are tiny pieces of memory directly attached right onto the CPU. The MSP 430 has 16 of them, and it's worth understanding what each is for.

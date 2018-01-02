@@ -7,7 +7,7 @@ type: post
 published: true
 author: Hywel Carver
 ---
-This is the thirteenth in a series. You might want to read the [previous post]({% post_url 2015-08-26-fun-with-assembly-12 %}) before reading this.
+This is the thirteenth in a series. You might want to read the [previous post]({% post_url 2015-08-27-fun-with-assembly-12 %}) before reading this.
 
 This post is based on the Jakarta level on [microcorruption.com](http://microcorruption.com). Like last time, we’re trying to find an input to open a lock without knowing the correct password, using knowledge of assembly language.
 

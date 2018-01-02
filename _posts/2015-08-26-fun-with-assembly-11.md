@@ -8,7 +8,7 @@ published: true
 author: Hywel Carver
 ---
 
-This is the eleventh in a series. You might want to read the [previous post]({% post_url 2015-08-25-fun-with-assembly-10 %}) before reading this.
+This is the eleventh in a series. You might want to read the [previous post]({% post_url 2015-08-23-fun-with-assembly-10 %}) before reading this.
 
 This post is based on the Montevideo level on [microcorruption.com](http://microcorruption.com). Like last time, we’re trying to find an input to open a lock without knowing the correct password, using knowledge of assembly language.
 
