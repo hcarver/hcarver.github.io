@@ -74,4 +74,4 @@ So my plan is:
 1. Work out the other changes that need making.
 1. Build it.
 
-Watch this space for the next update!
+Watch this space for more.
