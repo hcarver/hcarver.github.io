@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Building an 8-bit Computer: the Display'
-date: 2017-01-14
+date: 2018-01-14
 status: published
 type: post
 published: true

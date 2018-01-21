@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Building an 8-bit computer for Pong'
-date: 2017-01-03
+date: 2018-01-03
 status: publish
 type: post
 published: true

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Building an 8-bit computer: some design decisions'
-date: 2017-01-07
+date: 2018-01-07
 status: publish
 type: post
 published: true
