@@ -8,7 +8,7 @@ published: true
 author: Hywel Carver
 ---
 
-I'm building an 8-bit computer capable of running Pong! This post is about the
+I'm building an 8-bit computer capable of running Pong. This post is about the
 computers' registers, and other posts in this series are about different stages
 of building the computer.
 
