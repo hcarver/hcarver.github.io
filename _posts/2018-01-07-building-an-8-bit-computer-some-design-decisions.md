@@ -293,7 +293,7 @@ flexibility in future.
 So here are all the changes I'm going to make to the original computer design:
 * Add a third register
 * 8-bit memory address register (instead of 4-bit)
-* Full 8-bit RAM [Someone did that already](https://blog.straypaper.com/2017/12/02/replacing-74ls189-with-6116p/) (instead of 4-bits / 16 bytes)
+* Full 8-bit RAM ([which someone else already did](https://blog.straypaper.com/2017/12/02/replacing-74ls189-with-6116p/)) (instead of 4-bits / 16 bytes)
 * 8-bit program counter (instead of 4-bit)
 * Use an EEPROM for the program itself
 * Add a status register to allow for conditional jump instructions
