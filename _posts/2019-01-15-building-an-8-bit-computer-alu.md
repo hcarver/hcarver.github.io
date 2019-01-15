@@ -16,6 +16,9 @@ Here is the new ALU showing that 255 + 128 = 127 (mod 256), with the carry bit s
 
 ![Register layout](/assets/alu_working.jpg)
 
+One of the things that's really slowed me down is that the programme I'm using to design my stripboard layouts has a nasty habit of crashing. And when it crashes,
+it deletes the file I'm working on so I have to start again. It's called Fritzing - and it's brilliant except for this one (quite major) problem.
+
 Next up, I'm going to build a status register. I've been thinking hard about the carry bit - whether to make it
 a true carry bit, an overflow bit, or simply use the carry out of the sum / subtraction.
 
